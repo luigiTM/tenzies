@@ -1,73 +1,65 @@
-# React + TypeScript + Vite
+# 🎲 Tenzies
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Jogo de dados interativo onde o objetivo é rolar todos os 10 dados até que todos mostrem o mesmo número.
 
-Currently, two official plugins are available:
+## 🎮 Como Jogar
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. Clique em "Rolar dados" para gerar novos valores
+2. Clique nos dados para "segurar" os valores que você deseja manter (ficam verdes)
+3. Continue rolando até que todos os 10 dados mostrem o mesmo número
+4. Quando vencer, confetes aparecem e você pode iniciar um novo jogo!
 
-## React Compiler
+## 🛠️ Tecnologias
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **React** 19.1.1 - Biblioteca para construção da interface
+- **TypeScript** - Tipagem estática
+- **Vite** - Build tool e dev server
+- **react-confetti** - Animação de confetes ao vencer
+- **nanoid** - Geração de IDs únicos para os dados
+- **Google Fonts (Karla)** - Tipografia
 
-## Expanding the ESLint configuration
+## 🚀 Como Rodar
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Pré-requisitos
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Node.js (versão 18 ou superior)
+- pnpm (gerenciador de pacotes)
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Instalação
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+# Instalar dependências
+pnpm install
+
+# Iniciar servidor de desenvolvimento
+pnpm dev
+
+# Build para produção
+pnpm build
+
+# Visualizar build de produção
+pnpm preview
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+O jogo estará disponível em `http://localhost:5173`
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 📁 Estrutura do Projeto
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
 ```
+src/
+├── App.tsx              # Componente principal com lógica do jogo
+├── components/
+│   └── Die.tsx         # Componente individual do dado
+├── App.css             # Estilos do App
+├── index.css           # Estilos globais
+└── main.tsx            # Ponto de entrada
+```
+
+## 🎯 Funcionalidades
+
+- ✅ 10 dados aleatórios (valores de 1 a 6)
+- ✅ Sistema de "segurar" dados individuais
+- ✅ Detecção automática de vitória
+- ✅ Animação de confetes ao vencer
+- ✅ Interface em português
+- ✅ Acessibilidade com ARIA labels
